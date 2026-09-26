@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JAIIB PREP — Sectors of the Indian Economy</title>
+<meta name="description" content="Interactive JAIIB MCQ practice — Sectors of the Indian Economy">
+<style>
+:root{
+  --bg:#0d1117;--panel:#161b22;--panel2:#0f141b;--border:#30363d;--text:#e6edf3;--muted:#8b949e;
+  --blue:#58a6ff;--blue2:#1f6feb;--green:#3fb950;--red:#f85149;--yellow:#d29922;--shadow:0 10px 30px rgba(0,0,0,.22)
+}
+html.light{
+  --bg:#f6f8fa;--panel:#ffffff;--panel2:#f3f4f6;--border:#d0d7de;--text:#1f2328;--muted:#656d76;
+  --blue:#0969da;--blue2:#1f6feb;--green:#1a7f37;--red:#cf222e;--yellow:#9a6700;--shadow:0 8px 24px rgba(27,31,36,.10)
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font:14px/1.55 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif}
+button{font:inherit}
+.topbar{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 94%,transparent);backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
+.topbar-inner{max-width:1400px;margin:auto;padding:12px 18px;display:flex;gap:12px;align-items:center}
+.brand{font-weight:800;letter-spacing:.4px;color:var(--blue);white-space:nowrap}
+.badges{display:flex;gap:7px;flex-wrap:wrap;margin-left:auto}
+.badge{border:1px solid var(--border);background:var(--panel);padding:4px 8px;border-radius:999px;color:var(--muted);font-size:12px}
+.badge strong{color:var(--text)}
+.btn{border:1px solid var(--border);background:var(--panel);color:var(--text);border-radius:8px;padding:7px 10px;cursor:pointer;transition:.15s}
+.btn:hover{border-color:var(--blue);transform:translateY(-1px)}
+.btn.primary{background:var(--blue2);border-color:var(--blue2);color:#fff}
+.btn.danger{color:var(--red)}
+.layout{max-width:1400px;margin:0 auto;padding:18px;display:grid;grid-template-columns:230px minmax(0,1fr) 280px;gap:16px}
+.card{background:var(--panel);border:1px solid var(--border);border-radius:12px;box-shadow:var(--shadow)}
+.sidebar,.rightbar{height:max-content;position:sticky;top:76px}
+.side-title{padding:14px 14px 8px;font-weight:700}
+.navgrid{padding:10px;display:grid;grid-template-columns:repeat(5,1fr);gap:7px}
+.qnav{aspect-ratio:1;border:1px solid var(--border);border-radius:7px;background:var(--panel2);color:var(--muted);cursor:pointer;font-size:12px}
+.qnav.current{border-color:var(--blue);color:var(--blue);box-shadow:inset 0 0 0 1px var(--blue)}
+.qnav.correct{background:color-mix(in srgb,var(--green) 18%,var(--panel));color:var(--green);border-color:color-mix(in srgb,var(--green) 50%,var(--border))}
+.qnav.wrong{background:color-mix(in srgb,var(--red) 16%,var(--panel));color:var(--red);border-color:color-mix(in srgb,var(--red) 50%,var(--border))}
+.main{min-width:0}
+.hero{padding:18px 20px;margin-bottom:14px}
+.hero h1{margin:0 0 4px;font-size:22px}
+.hero p{margin:0;color:var(--muted)}
+details{margin-bottom:12px}
+details summary{cursor:pointer;list-style:none;padding:14px 16px;font-weight:750;color:var(--blue)}
+details summary::-webkit-details-marker{display:none}
+details summary:after{content:"＋";float:right;color:var(--muted)}
+details[open] summary:after{content:"−"}
+.details-body{padding:0 16px 16px}
+.story{color:var(--text);font-size:15px}
+.concepts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+.concept{padding:10px 12px;border:1px solid var(--border);border-radius:8px;background:var(--panel2)}
+.concept b{color:var(--blue)}
+.progress-wrap{padding:12px 16px;margin-bottom:12px}
+.progress-line{height:7px;background:var(--panel2);border-radius:99px;overflow:hidden}
+.progress-fill{height:100%;background:var(--blue);width:0;transition:.2s}
+.progress-meta{display:flex;justify-content:space-between;color:var(--muted);font-size:12px;margin-top:6px}
+.question-card{padding:20px}
+.qhead{display:flex;justify-content:space-between;gap:10px;color:var(--muted);font-size:12px;margin-bottom:12px}
+.topic-tag{color:var(--blue);border:1px solid var(--border);padding:3px 7px;border-radius:999px}
+.question{font-size:19px;font-weight:700;line-height:1.45;margin-bottom:18px}
+.options{display:grid;gap:10px}
+.option{width:100%;text-align:left;border:1px solid var(--border);background:var(--panel2);color:var(--text);border-radius:9px;padding:13px 14px;cursor:pointer;display:flex;gap:10px;align-items:flex-start}
+.option:hover:not(:disabled){border-color:var(--blue);background:color-mix(in srgb,var(--blue) 7%,var(--panel2))}
+.option .letter{font-weight:800;color:var(--blue);min-width:22px}
+.option.correct{border-color:var(--green);background:color-mix(in srgb,var(--green) 12%,var(--panel2))}
+.option.wrong{border-color:var(--red);background:color-mix(in srgb,var(--red) 12%,var(--panel2))}
+.option:disabled{cursor:default}
+.feedback{margin-top:15px;border-radius:9px;padding:14px;border:1px solid var(--border);display:none}
+.feedback.correct{display:block;border-color:color-mix(in srgb,var(--green) 55%,var(--border));background:color-mix(in srgb,var(--green) 9%,var(--panel))}
+.feedback.wrong{display:block;border-color:color-mix(in srgb,var(--red) 55%,var(--border));background:color-mix(in srgb,var(--red) 8%,var(--panel))}
+.feedback-title{font-weight:800;margin-bottom:6px}
+.feedback-title.ok{color:var(--green)}.feedback-title.bad{color:var(--red)}
+.explain{color:var(--text)}
+.remember{margin-top:9px;padding:9px 11px;border-left:3px solid var(--blue);background:color-mix(in srgb,var(--blue) 7%,var(--panel2));border-radius:5px}
+.actions{display:flex;justify-content:space-between;gap:10px;margin-top:16px}
+.analytics{padding:14px}
+.analytics h3{margin:0 0 12px;font-size:14px}
+.donut-wrap{display:flex;align-items:center;gap:16px}
+.donut{width:108px;height:108px;border-radius:50%;background:conic-gradient(var(--green) 0deg,var(--green) 0deg,var(--red) 0deg,var(--red) 0deg,var(--border) 0deg,var(--border) 360deg);position:relative;flex:0 0 auto}
+.donut:after{content:"";position:absolute;inset:22px;background:var(--panel);border-radius:50%}
+.stat-list{display:grid;gap:6px;width:100%}.stat{display:flex;justify-content:space-between;color:var(--muted)}.stat b{color:var(--text)}
+.topic-row{margin:10px 0}.topic-head{display:flex;justify-content:space-between;font-size:12px}.bar{height:6px;background:var(--panel2);border-radius:99px;overflow:hidden;margin-top:5px}.bar span{display:block;height:100%;background:var(--blue)}
+.mini{font-size:12px;color:var(--muted)}
+.status-box{margin-top:10px;padding:10px;border:1px solid var(--border);border-radius:8px;background:var(--panel2)}
+.status-good{color:var(--green)}.status-bad{color:var(--red)}.status-muted{color:var(--muted)}
+.result{padding:20px;display:none}.result.show{display:block}
+.result-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:15px 0}
+.metric{padding:14px;background:var(--panel2);border:1px solid var(--border);border-radius:9px}.metric b{display:block;font-size:24px}.metric span{color:var(--muted);font-size:12px}
+.topic-table{width:100%;border-collapse:collapse;margin-top:10px}.topic-table th,.topic-table td{border-bottom:1px solid var(--border);padding:8px;text-align:left}.topic-table th{color:var(--muted);font-size:12px}
+.account{padding:14px}.account-row{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.avatar{width:30px;height:30px;border-radius:50%;background:var(--blue2);display:grid;place-items:center;color:#fff;font-weight:800}
+footer{max-width:1400px;margin:0 auto;padding:0 18px 25px;color:var(--muted);font-size:11px}
+.mobile-only{display:none}
+@media(max-width:1100px){.layout{grid-template-columns:190px minmax(0,1fr)}.rightbar{display:none}}
+@media(max-width:720px){
+ .topbar-inner{flex-wrap:wrap}.badges{order:3;width:100%;margin-left:0}.layout{grid-template-columns:1fr;padding:10px}.sidebar{position:static;display:none}.mobile-only{display:block}.hero{padding:15px}.question-card{padding:15px}.question{font-size:17px}.concepts{grid-template-columns:1fr}.result-grid{grid-template-columns:repeat(2,1fr)}
+}
+</style>
+</head>
+<body>
+<header class="topbar">
+  <div class="topbar-inner">
+    <div class="brand">◆ JAIIB PREP</div>
+    <div class="badges">
+      <span class="badge">Questions <strong id="totalBadge">0</strong></span>
+      <span class="badge">Score <strong id="scoreBadge">0</strong></span>
+      <span class="badge">Answered <strong id="answeredBadge">0</strong></span>
+    </div>
+    <button class="btn" id="themeBtn" title="Toggle light/dark mode">☀ Light</button>
+    <button class="btn danger" id="freshBtn">■ Start Fresh</button>
+    <button class="btn" id="accountBtn">Sign in with Google</button>
+  </div>
+</header>
+
+<div class="layout">
+  <aside class="sidebar card">
+    <div class="side-title">Question Navigator</div>
+    <div class="navgrid" id="navGrid"></div>
+    <div style="padding:0 14px 14px" class="mini">Blue = current · Green = correct · Red = incorrect</div>
+  </aside>
+
+  <main class="main">
+    <section class="hero card">
+      <h1>Sectors of the Indian Economy</h1>
+      <p>JAIIB • Indian Economy &amp; Indian Financial System • Module A focus • Active recall practice</p>
+    </section>
+
+    <details class="card" open>
+      <summary>Chapter Summary</summary>
+      <div class="details-body story">
+        India’s economic activity can be understood as a chain that begins with <b>natural resources</b>, moves through <b>processing and manufacturing</b>, and then expands into <b>services</b>. The primary sector directly uses resources such as agriculture, forestry and fishing; the secondary sector processes raw materials through industrial activity; and the tertiary sector supplies services such as banking, education, healthcare and communication. Quaternary activity is the knowledge side of the economy—teaching, research and development—while the quinary sector covers high-level decision-making in government and private organisations. India’s structure has shifted over time: agriculture’s GDP share has fallen while industry and especially services have expanded, with services reaching 52.8% in 2021–22 in the supplied series. Agriculture nevertheless remains crucial for livelihoods and employment. Industry includes mining and quarrying, manufacturing, utilities and construction; the Index of Industrial Production (IIP), with 2010–11 as its base year, tracks production in mining, manufacturing and electricity. Services include trade, transport, finance, real estate, professional services and public administration. A <b>sunrise sector</b> is an emerging activity with strong growth and innovation potential. Finally, the organised sector is characterised by regular, regulated employment and social-security-type benefits, whereas the unorganised sector is dominated by small, scattered units and less secure employment. The key memory chain is: <b>resource → processing → service → knowledge → decision</b>.
+      </div>
+    </details>
+
+    <details class="card">
+      <summary>Important Concepts — Rapid Revision</summary>
+      <div class="details-body">
+        <div class="concepts">
+          <div class="concept"><b>Primary:</b> agriculture, forestry, fishing; direct use of natural resources.</div>
+          <div class="concept"><b>Secondary:</b> processing/manufacturing; industrial sector; construction included.</div>
+          <div class="concept"><b>Tertiary:</b> services such as banking, healthcare, education and communication.</div>
+          <div class="concept"><b>Quaternary:</b> “knowledge sector” — teaching, R&amp;D and intellectual activity.</div>
+          <div class="concept"><b>Quinary:</b> highest-level decision makers in government/private sector.</div>
+          <div class="concept"><b>GDP series:</b> Services 33.3% (1950–51) → 52.8% (2021–22); agriculture 51.8% → 18.6%.</div>
+          <div class="concept"><b>Industry:</b> mining/quarrying, manufacturing, utilities, construction; IIP base year 2010–11.</div>
+          <div class="concept"><b>Core industries:</b> refinery products, electricity, steel, coal, crude oil, natural gas, cement, fertilisers.</div>
+          <div class="concept"><b>Agriculture:</b> 54.6% workforce (Census 2011 figure cited) and 17.8% GVA in 2019–20 at current prices.</div>
+          <div class="concept"><b>Construction:</b> second-largest employment sector after agriculture; over 31 million people and ~8% of total employment in the source.</div>
+          <div class="concept"><b>Sunrise:</b> emerging sector with high growth, innovation and public awareness; examples include Green Energy, FinTech and IT.</div>
+          <div class="concept"><b>Organised:</b> fixed/regular terms, stronger regulatory coverage, regular salary and employment benefits.</div>
+          <div class="concept"><b>Unorganised:</b> small/scattered units, irregular employment, weaker protection and often daily wages.</div>
+          <div class="concept"><b>Memory chain:</b> Green = Agriculture; White = Milk; Yellow = Oilseeds; Blue = Fish; Silver = Eggs; Golden = Fruits/Honey/Horticulture.</div>
+        </div>
+      </div>
+    </details>
+
+    <div class="progress-wrap card">
+      <div class="progress-line"><div class="progress-fill" id="progressFill"></div></div>
+      <div class="progress-meta"><span id="progressText">Question 1 of 1</span><span id="livePercent">0% attempted</span></div>
+    </div>
+
+    <section class="question-card card" id="quizCard">
+      <div class="qhead"><span id="qNo">Question 1</span><span class="topic-tag" id="topicTag">Sector Classification</span></div>
+      <div class="question" id="questionText"></div>
+      <div class="options" id="options"></div>
+      <div class="feedback" id="feedback"></div>
+      <div class="actions">
+        <button class="btn" id="prevBtn">← Previous</button>
+        <button class="btn primary" id="nextBtn">Next →</button>
+      </div>
+    </section>
+
+    <section class="result card" id="resultScreen">
+      <h2 style="margin-top:0">Quiz Result</h2>
+      <p class="mini">Your performance report is ready. Saving is prepared for later backend integration.</p>
+      <div class="result-grid">
+        <div class="metric"><b id="rAttempted">0</b><span>Attempted</span></div>
+        <div class="metric"><b id="rCorrect">0</b><span>Correct</span></div>
+        <div class="metric"><b id="rWrong">0</b><span>Incorrect</span></div>
+        <div class="metric"><b id="rPct">0%</b><span>Percentage</span></div>
+      </div>
+      <div class="analytics card" style="box-shadow:none">
+        <h3>Topic Performance</h3>
+        <div id="resultTopics"></div>
+      </div>
+      <div class="actions">
+        <button class="btn primary" id="saveBtn">Save Results</button>
+        <button class="btn" id="pdfBtn">Download Results as PDF</button>
+        <button class="btn" id="restartBtn">↻ Restart Quiz</button>
+      </div>
+      <div class="status-box mini" id="saveStatus">Practice mode: results are not sent anywhere until a backend is connected.</div>
+    </section>
+  </main>
+
+  <aside class="rightbar">
+    <section class="analytics card">
+      <h3>Live Performance</h3>
+      <div class="donut-wrap">
+        <div class="donut" id="donut"></div>
+        <div class="stat-list">
+          <div class="stat">Correct <b id="correctStat">0</b></div>
+          <div class="stat">Wrong <b id="wrongStat">0</b></div>
+          <div class="stat">Unattempted <b id="unattemptedStat">0</b></div>
+        </div>
+      </div>
+    </section>
+    <section class="analytics card" style="margin-top:12px">
+      <h3>Area of Strength</h3>
+      <div id="strengthPanel" class="status-muted">Insufficient data.</div>
+      <h3 style="margin-top:16px">Area of Weakness</h3>
+      <div id="weaknessPanel" class="status-muted">Insufficient data.</div>
+      <div id="revisePanel" class="status-box">Revise first: waiting for enough attempts.</div>
+    </section>
+    <section class="account card" style="margin-top:12px">
+      <div class="mini" style="margin-bottom:8px">Account</div>
+      <div class="account-row" id="accountState">
+        <div class="avatar">G</div>
+        <div><b>Google Login</b><div class="mini">Ready for later integration</div></div>
+      </div>
+    </section>
+  </aside>
+</div>
+
+<footer>
+  JAIIB PREP • Practice app • The quiz is designed for active recall and revision. No credentials are stored in this browser-only practice build.
+</footer>
+
+<script>
+const QUESTIONS = [
+{id:"S01",topic:"Sector Classification",q:"Which activity belongs to the primary sector of the Indian economy?",options:["Banking","Agriculture","Manufacturing","Road construction"],a:1,e:"The primary sector directly uses natural resources. Agriculture is therefore a primary-sector activity, alongside forestry and fishing. Banking is a service, while manufacturing and construction belong to the secondary sector. Memory hook: <b>Primary = resources first</b>.",r:"Remember: resource extraction/use → Primary."},
+{id:"S02",topic:"Sector Classification",q:"Which sector is commonly known as the industrial sector because it processes raw materials obtained from the primary sector?",options:["Primary sector","Secondary sector","Tertiary sector","Quinary sector"],a:1,e:"The secondary sector processes raw materials into goods and includes industrial and manufacturing activity. It adds value by transforming inputs rather than merely extracting them. Memory hook: <b>Secondary = transform</b>.",r:"Remember: raw material → processing/value addition = Secondary."},
+{id:"S03",topic:"Sector Classification",q:"Which of the following is a typical tertiary-sector activity?",options:["Fishing","Mining","Banking","Crop cultivation"],a:2,e:"The tertiary sector produces services rather than extracting or manufacturing physical goods. Banking, education, healthcare and communication are examples. Memory hook: <b>Tertiary = service to the other sectors and consumers</b>.",r:"Remember: Banking is a service, so it is tertiary."},
+{id:"S04",topic:"Five Sectors",q:"Which sector is also called the 'knowledge sector' and includes teaching, research and development?",options:["Primary","Secondary","Quaternary","Quinary"],a:2,e:"The quaternary sector represents the intellectual and knowledge-oriented side of economic activity. Teaching, research and development are central examples. It is treated as a broader tertiary-sector subset in the supplied framework. Memory hook: <b>Quaternary = knowledge</b>.",r:"Remember: Quaternary → knowledge, R&D, teaching."},
+{id:"S05",topic:"Five Sectors",q:"Which sector includes the highest-level decision makers in government and private corporate organisations?",options:["Primary","Tertiary","Quaternary","Quinary"],a:3,e:"The quinary sector covers activities in which key choices are made. It includes senior company executives, senior government officials and other high-level decision makers. Memory hook: <b>Quinary = decisions at the top</b>.",r:"Remember: Quinary is the 'brain' of high-level socioeconomic decision-making."},
+{id:"S06",topic:"Sector Differences",q:"Which sector primarily provides raw materials used for the production of goods and services?",options:["Primary","Secondary","Tertiary","Quaternary"],a:0,e:"Agriculture, forestry and fishing are examples of primary activities that directly use natural resources. Their output becomes an input for further processing or consumption. Secondary activity transforms these inputs; tertiary activity provides services.",r:"Remember the chain: Primary supplies → Secondary transforms → Tertiary serves."},
+{id:"S07",topic:"Sector Differences",q:"Which statement best distinguishes the secondary sector from the primary sector?",options:["Secondary sector directly extracts natural resources","Secondary sector transforms inputs and adds value","Secondary sector consists only of banking activities","Secondary sector is limited to government decision-making"],a:1,e:"The defining distinction is transformation. The secondary sector converts raw materials into other goods through manufacturing and related industrial processes, thereby adding value. Memory hook: <b>Secondary changes the form of the input</b>.",r:"Remember: transformation/value addition is the key secondary-sector idea."},
+{id:"S08",topic:"Agricultural Revolutions",q:"The Green Revolution in the supplied chronology is associated with which field?",options:["Milk and dairy products","Agriculture","Fish and aquaculture","Oilseeds"],a:1,e:"The Green Revolution is linked with agriculture and is shown in the supplied table for 1966–1978. The same table pairs White with milk/dairy, Blue with fish/aquaculture and Yellow with oilseeds. Memory hook: <b>Green = crops/agriculture</b>.",r:"Remember: Green → Agriculture."},
+{id:"S09",topic:"Agricultural Revolutions",q:"Which agricultural revolution is associated with milk and dairy products?",options:["White Revolution","Blue Revolution","Silver Revolution","Golden Revolution"],a:0,e:"The White Revolution, also called Operation Flood, is associated with milk and dairy products in the supplied table. This pairing is one of the most common colour-revolution recall points. Memory hook: <b>White = milk</b>.",r:"Remember: White → milk/dairy → Operation Flood."},
+{id:"S10",topic:"Agricultural Revolutions",q:"Which revolution is associated with oilseeds?",options:["Yellow Revolution","Blue Revolution","Brown Revolution","Pink Revolution"],a:0,e:"The Yellow Revolution is paired with oilseeds in the supplied revolution table. The colour is an easy recall cue: <b>Yellow → oilseeds</b>. Blue is linked with fish and aquaculture, while Pink is linked with pharmaceuticals, prawns and onion in the supplied material.",r:"Remember: Yellow = oilseeds."},
+{id:"S11",topic:"Agricultural Revolutions",q:"Which revolution is associated with fish and aquaculture?",options:["Blue Revolution","Golden Revolution","Silver Revolution","Red Revolution"],a:0,e:"The Blue Revolution is associated with fish and aquaculture in the supplied table. The colour pairing is intuitive: <b>Blue → water → fish</b>. This helps separate it from Silver (eggs) and Golden (fruits, honey and horticulture).",r:"Remember: Blue → water → fish."},
+{id:"S12",topic:"Agricultural Revolutions",q:"The Silver Revolution in the supplied table is associated with which product?",options:["Eggs","Cotton","Jute","Potato"],a:0,e:"The Silver Revolution is linked with eggs and is shown for 1969–1978. The important exam memory pair is <b>Silver → Eggs</b>. Do not confuse it with Silver Fibre, which is linked with cotton.",r:"Remember: Silver = eggs; Silver Fibre = cotton."},
+{id:"S13",topic:"Agricultural Revolutions",q:"Which revolution is associated with fruits, honey and horticulture?",options:["Golden Revolution","White Revolution","Black Revolution","Grey Revolution"],a:0,e:"The Golden Revolution is associated with fruits, honey and horticulture in the supplied table, with the period shown as 1991–2003. The word 'Golden' provides a useful memory association with fruits and horticultural prosperity.",r:"Remember: Golden → fruits, honey, horticulture."},
+{id:"S14",topic:"Agricultural Revolutions",q:"Which revolution is associated with petroleum?",options:["Black Revolution","Brown Revolution","Grey Revolution","Round Revolution"],a:0,e:"The supplied table pairs the Black Revolution with petroleum. The colour cue is straightforward: <b>Black → petroleum</b>. Grey is linked with fertilisers, while Round is linked with potato.",r:"Remember: Black = petroleum."},
+{id:"S15",topic:"Agricultural Revolutions",q:"Which revolution is associated with potatoes?",options:["Round Revolution","Golden Revolution","Red Revolution","Protein Revolution"],a:0,e:"The Round Revolution is associated with potato in the supplied table and is shown for 1965–2005. The memory cue is direct: <b>Round → round potato</b>.",r:"Remember: Round Revolution → Potato."},
+{id:"S16",topic:"GDP Contribution",q:"In the supplied GDP series, which sector had the largest share in 1950–51?",options:["Agriculture & allied","Industry","Services","Construction"],a:0,e:"In 1950–51, agriculture and allied activities accounted for 51.8% in the supplied table, compared with 14.2% for industry and 33.3% for services. Thus agriculture & allied was the largest of the three listed sectors. Memory hook: <b>1950s = agriculture-led structure</b>.",r:"Remember: 1950–51 → Agriculture & allied 51.8%."},
+{id:"S17",topic:"GDP Contribution",q:"According to the supplied series, what was the services sector's share in 2021–22?",options:["28.6%","18.6%","52.8%","26.9%"],a:2,e:"The 2021–22 row gives services at 52.8%, industry at 28.6% and agriculture & allied at 18.6%. The long-run pattern is a large rise in the services share. Memory hook: <b>2021–22: 18.6 + 28.6 + 52.8</b>.",r:"Remember the final-row trio: Agriculture 18.6%, Industry 28.6%, Services 52.8%."},
+{id:"S18",topic:"GDP Contribution",q:"From 1950–51 to 2021–22, which broad change is visible in the supplied GDP-share series?",options:["Agriculture rose sharply while services disappeared","Services increased substantially while agriculture's share declined","Industry fell to zero","All three sectors remained unchanged"],a:1,e:"The series shows agriculture & allied falling from 51.8% in 1950–51 to 18.6% in 2021–22, while services rose from 33.3% to 52.8%. Industry also increased overall. This illustrates structural change rather than a constant sectoral composition.",r:"Remember: long-run shift = agriculture down, services up, industry up."},
+{id:"S19",topic:"Agriculture",q:"What was the agriculture and allied sector's GVA share in 2019–20 at current prices, according to the supplied government-report extract?",options:["14.2%","17.8%","26.9%","54.6%"],a:1,e:"The supplied extract cites approximately 17.8% of India's GVA for agriculture and allied activities in 2019–20 at current prices. The 54.6% figure in the same extract refers to the share of the workforce engaged in agricultural and allied activities, not GVA.",r:"Remember: 17.8% = GVA; 54.6% = workforce figure cited."},
+{id:"S20",topic:"Agriculture",q:"The 54.6% figure cited for agricultural and allied activities refers to what?",options:["Share of India's GVA in 2019–20","Share of the total workforce engaged in agricultural and allied activities","Share of gross cropped area","Share of manufacturing employment"],a:1,e:"The government-report extract cited in the supplied pages states that 54.6% of the total workforce was engaged in agricultural and allied sector activities, using Census 2011. It separately cites 17.8% as the sector's GVA share for 2019–20 at current prices. Memory hook: <b>54.6 = workforce; 17.8 = GVA</b>.",r:"Remember the two different measures: people vs output."},
+{id:"S21",topic:"Agriculture",q:"According to the supplied Land Use Statistics 2016–17 figures, what was the gross cropped area?",options:["139.4 million hectares","200.2 million hectares","328.7 million hectares","68.6 million hectares"],a:1,e:"The supplied figures state a total geographical area of 328.7 million hectares, net sown area of 139.4 million hectares and gross cropped area of 200.2 million hectares. The gross cropped area can exceed net sown area because the same land may be cropped more than once.",r:"Remember: 328.7 total → 139.4 net sown → 200.2 gross cropped."},
+{id:"S22",topic:"Agriculture",q:"What was the cropping intensity reported in the supplied Land Use Statistics 2016–17 figures?",options:["42.4%","68.6%","143.6%","154.6%"],a:2,e:"Cropping intensity was given as 143.6%. It reflects the relationship between gross cropped area and net sown area: 200.2 ÷ 139.4 × 100 ≈ 143.6%. Memory hook: <b>gross/net × 100 = cropping intensity</b>.",r:"Remember: cropping intensity >100% indicates multiple cropping on some land."},
+{id:"S23",topic:"Industry",q:"Which of the following is one of the four industrial sub-sectors identified in the supplied material?",options:["Agriculture","Mining and quarrying","Banking","Education"],a:1,e:"The industrial sector is divided into mining and quarrying; manufacturing; power, gas, water supply and other utility services; and construction. Agriculture is primary, while banking and education are tertiary services.",r:"Remember the four: Mining + Manufacturing + Utilities + Construction."},
+{id:"S24",topic:"Industry",q:"What is the base year of the Index of Industrial Production (IIP) stated in the supplied material?",options:["2004–05","2010–11","2011–12","2015–16"],a:1,e:"The supplied material states that the IIP uses 2010–11 as its base year. The index measures changes in the volume of industrial production, covering mining, manufacturing and electricity. Memory hook: <b>IIP → 2010–11</b>.",r:"Remember: IIP base year = 2010–11."},
+{id:"S25",topic:"Industry",q:"Which set contains the eight core industries listed in the supplied material?",options:["Refinery products, electricity, steel, coal, crude oil, natural gas, cement, fertilisers","Agriculture, fisheries, banking, insurance, steel, cement, railways, textiles","Coal, cotton, jute, tea, rice, wheat, cement, steel","Power, banking, insurance, IT, telecom, roads, ports, aviation"],a:0,e:"The eight core industries listed are refinery products, electricity, steel, coal, crude oil, natural gas, cement and fertilisers. These sectors are treated as core components of industrial activity and are monitored separately in the industrial statistics framework.",r:"Memory chain: Refinery–Electricity–Steel–Coal–Crude–Gas–Cement–Fertilisers."},
+{id:"S26",topic:"Industry",q:"Which phase of Indian industrial development is identified as the post-reform period?",options:["Phase I: 1951–1965","Phase II: 1965–1980","Phase III: 1980–1991","Phase IV: 1991 onwards"],a:3,e:"The supplied four-phase industrial chronology identifies Phase IV, from 1991 onwards, as the post-reform period. The sequence is foundation (1951–65), industrial fall (1965–80), recovery (1980–91), and post-reform (1991 onwards).",r:"Remember the sequence: Foundation → Fall → Recovery → Post-reform."},
+{id:"S27",topic:"Services",q:"Which statement best describes the output of the services sector?",options:["Only tangible manufactured goods","Mainly intangible or invisible goods and services","Only agricultural raw materials","Only government tax receipts"],a:1,e:"The supplied material describes services as producing 'intangible or invisible goods' for businesses and consumers. Examples include trade, transport, communication, financial services, real estate and professional services.",r:"Remember: Services create value mainly through activities rather than physical transformation."},
+{id:"S28",topic:"Services",q:"What was the services sector's share of GVA in 2019–20 according to the supplied MoSPI figures?",options:["18.3%","26.9%","53.1%","55.3%"],a:3,e:"The supplied MoSPI figures state that services accounted for 55.3% of GVA in 2019–20. The same paragraph gives a break-up of 18.3% from trade/hotels/transport/communication/broadcasting, 21.4% from financial/real estate/professional services and 15.6% from public administration, defence and other services.",r:"Remember: 2019–20 services GVA = 55.3%."},
+{id:"S29",topic:"Services",q:"Which broad category accounted for 21.4% of services-sector GVA in the supplied 2019–20 break-up?",options:["Trade, hotels and transport","Financial, real estate and professional services","Public administration, defence and other services","Agriculture and allied activities"],a:1,e:"The supplied 2019–20 services break-up assigns 21.4% to financial, real estate and professional services. Trade, hotels, transport, communication and broadcasting account for 18.3%, while public administration, defence and other services account for 15.6%.",r:"Remember the three-part services split: 18.3 + 21.4 + 15.6 = 55.3."},
+{id:"S30",topic:"Employment",q:"In the supplied employment table, which sector had the highest share for urban residents?",options:["Primary","Secondary","Service/Tertiary","Agriculture only"],a:2,e:"For urban residents, the table shows Primary 9%, Secondary 31% and Service/Tertiary 60%. Thus services/tertiary activities have the largest urban employment share in that table. Memory hook: <b>Urban → Services</b>.",r:"Remember the urban column: 9 → 31 → 60."},
+{id:"S31",topic:"Employment",q:"In the supplied employment table, which sector had the highest share for rural residents?",options:["Primary","Secondary","Service/Tertiary","Manufacturing"],a:0,e:"For rural residents, the table gives Primary 66.6%, Secondary 16% and Service/Tertiary 17.4%. Therefore primary activities have the largest rural employment share in the table. Memory hook: <b>Rural → Primary</b>.",r:"Remember the rural column: 66.6 → 16 → 17.4."},
+{id:"S32",topic:"Employment",q:"What total employment share is shown for the secondary sector in the supplied employment table?",options:["16.0%","20.0%","24.3%","31.0%"],a:2,e:"The 'Total' column shows 24.3% for the secondary sector. The same row shows 16% for rural residents, 31% for urban residents, 25.9% for males and 20% for females. This is a table-reading question where the column matters.",r:"Remember: Secondary total = 24.3% in the supplied table."},
+{id:"S33",topic:"Employment",q:"Approximately what share of the labour force is stated to be employed in manufacturing?",options:["8%","12%","24.3%","31%"],a:1,e:"The supplied material states that manufacturing employs roughly 12% of the labour force. It also notes manufacturing's potential for mass employment, particularly for low-skilled workers, as agriculture's capacity to generate jobs declines and modern services may not absorb all displaced labour.",r:"Remember: Manufacturing ≈ 12% of labour force in the supplied figure."},
+{id:"S34",topic:"Construction",q:"According to the supplied material, construction is the country's what-largest employment sector?",options:["Largest, ahead of agriculture","Second largest, after agriculture","Third largest, after services and industry","Smallest major employment sector"],a:1,e:"Construction is described as the second-largest employment sector in the country, after agriculture. The supplied text states that it employs over 31 million people and accounts for around 8% of total employment.",r:"Remember: Construction = No. 2 employment sector after agriculture in the supplied material."},
+{id:"S35",topic:"Sunrise Sector",q:"Which description best fits a sunrise sector?",options:["A mature sector with no expected growth","A sector in infancy with significant growth potential","A sector restricted to agriculture","A sector whose output is falling every year"],a:1,e:"A sunrise sector is still in its infancy but has the potential for significant growth. The supplied description highlights strong growth rates, innovation, public awareness and investor interest in long-term prospects. Memory hook: <b>Sunrise = early stage + future growth</b>.",r:"Remember: sunrise means emerging now, growing later."},
+{id:"S36",topic:"Sunrise Sector",q:"Which of the following is listed as an example of a sunrise sector in India?",options:["Green Energy","Traditional subsistence farming only","Only coal mining","Only handloom weaving"],a:0,e:"The supplied examples include Green Energy, FinTech, Information Technology, Electronics, Pharmaceuticals, Automobiles, Healthcare, Infrastructure and Retail. These are described as emerging sectors with potential for future job creation and business growth.",r:"Remember: Green Energy + FinTech + IT are key sunrise examples."},
+{id:"S37",topic:"Organised vs Unorganised",q:"Which feature most clearly characterises the organised sector?",options:["Employment terms are fixed and regular","Workers are paid only daily wages","Enterprises are largely unregistered","Working hours are never fixed"],a:0,e:"The organised sector is characterised by fixed and regular employment terms, assured work and stronger regulatory coverage. The supplied comparison also associates it with regular monthly salary, fixed working hours and employment benefits. Memory hook: <b>Organised = regular + regulated + benefits</b>.",r:"Remember: Organised means predictable employment conditions."},
+{id:"S38",topic:"Organised vs Unorganised",q:"Which example best fits the unorganised sector as described in the supplied material?",options:["Registered government employee","Registered industrial worker","Domestic worker","Employee of a regulated registered office"],a:2,e:"Domestic workers are explicitly listed among unorganised-sector workers. The supplied material also includes construction workers, street workers and people working in tiny workshops unaffiliated with government. Such employment is generally less secure and less regulated.",r:"Remember: Unorganised examples include domestic work, street work and tiny unregistered units."},
+{id:"S39",topic:"Organised vs Unorganised",q:"Which remuneration pattern is associated with the unorganised sector in the supplied comparison?",options:["Regular monthly salary only","Daily wages","Mandatory pension salary","Fixed executive compensation"],a:1,e:"The comparison table associates the organised sector with regular monthly salary and the unorganised sector with daily wages. This reflects the broader distinction between regular, structured employment and irregular employment arrangements.",r:"Remember: Organised → monthly salary; Unorganised → daily wages."},
+{id:"S40",topic:"Organised vs Unorganised",q:"Which combination correctly describes the organised sector?",options:["Fixed hours + employer PF contribution + employment benefits","Unfixed hours + no PF contribution + daily wages","No government rules + irregular employment","Small scattered units + no job security"],a:0,e:"The supplied comparison lists fixed working hours, employer contribution to provident fund, and add-on benefits such as medical facilities, pension and leave travel compensation for the organised sector. The other combinations describe features associated with the unorganised sector.",r:"Remember the organised package: fixed hours + PF + benefits + security."}
+];
+
+const stateKey="jaiib_sectors_attempt_v61";
+const themeKey="jaiib_theme";
+let order=[], current=0, attempts={}, theme=localStorage.getItem(themeKey)||"dark";
+
+function applyTheme(){
+  document.documentElement.classList.toggle("light",theme==="light");
+  document.getElementById("themeBtn").textContent=theme==="light"?"☾ Dark":"☀ Light";
+  localStorage.setItem(themeKey,theme);
+}
+function freshState(shuffle=true){
+  order=[...Array(QUESTIONS.length).keys()];
+  if(shuffle) order.sort(()=>Math.random()-.5);
+  current=0; attempts={};
+  localStorage.removeItem(stateKey);
+  document.getElementById("resultScreen").classList.remove("show");
+  document.getElementById("quizCard").style.display="";
+  window.scrollTo({top:0,behavior:"smooth"});
+  renderNav(); renderQuestion(); updateAnalytics(); persist();
+}
+function persist(){
+  localStorage.setItem(stateKey,JSON.stringify({order,current,attempts}));
+}
+function restore(){
+  try{
+    const x=JSON.parse(localStorage.getItem(stateKey)||"null");
+    if(x && Array.isArray(x.order) && x.order.length===QUESTIONS.length){order=x.order;current=x.current||0;attempts=x.attempts||{};return true}
+  }catch(e){}
+  return false;
+}
+function renderNav(){
+  const el=document.getElementById("navGrid"); el.innerHTML="";
+  order.forEach((qi,i)=>{
+    const b=document.createElement("button"); b.className="qnav"; b.textContent=i+1;
+    if(i===current)b.classList.add("current");
+    const at=attempts[QUESTIONS[qi].id]; if(at)b.classList.add(at.isCorrect?"correct":"wrong");
+    b.onclick=()=>{current=i;renderNav();renderQuestion();persist();window.scrollTo({top:0,behavior:"smooth"})};
+    el.appendChild(b);
+  });
+}
+function renderQuestion(){
+  const q=QUESTIONS[order[current]];
+  document.getElementById("qNo").textContent=`Question ${current+1} of ${QUESTIONS.length}`;
+  document.getElementById("topicTag").textContent=q.topic;
+  document.getElementById("questionText").innerHTML=q.q;
+  const opt=document.getElementById("options");opt.innerHTML="";
+  q.options.forEach((txt,i)=>{
+    const b=document.createElement("button");b.className="option";
+    b.innerHTML=`<span class="letter">${String.fromCharCode(65+i)}</span><span>${txt}</span>`;
+    b.onclick=()=>answer(i);
+    opt.appendChild(b);
+  });
+  const at=attempts[q.id];
+  const fb=document.getElementById("feedback");fb.className="feedback";fb.innerHTML="";
+  if(at) showFeedback(q,at.selected);
+  document.getElementById("prevBtn").disabled=current===0;
+  document.getElementById("nextBtn").textContent=current===QUESTIONS.length-1?"Finish →":"Next →";
+  const pct=(current/QUESTIONS.length)*100;
+  document.getElementById("progressFill").style.width=pct+"%";
+  document.getElementById("progressText").textContent=`Question ${current+1} of ${QUESTIONS.length}`;
+  const answered=Object.keys(attempts).length;
+  document.getElementById("livePercent").textContent=`${Math.round(answered/QUESTIONS.length*100)}% attempted`;
+}
+function answer(selected){
+  const q=QUESTIONS[order[current]];
+  if(attempts[q.id]) return;
+  attempts[q.id]={selected,isCorrect:selected===q.a,attemptedAt:new Date().toISOString()};
+  showFeedback(q,selected); renderNav(); updateAnalytics(); persist();
+}
+function showFeedback(q,selected){
+  [...document.querySelectorAll(".option")].forEach((b,i)=>{
+    b.disabled=true;
+    if(i===q.a)b.classList.add("correct");
+    if(i===selected && selected!==q.a)b.classList.add("wrong");
+  });
+  const fb=document.getElementById("feedback"); const ok=selected===q.a;
+  fb.className="feedback "+(ok?"correct":"wrong");
+  fb.innerHTML=`<div class="feedback-title ${ok?"ok":"bad"}">${ok?"✓ Correct":"✕ Incorrect"} — Correct answer: ${String.fromCharCode(65+q.a)}</div>
+  <div class="explain">${q.e}</div><div class="remember"><b>Remember:</b> ${q.r.replace(/^Remember:\s*/,"")}</div>`;
+}
+function updateAnalytics(){
+  const vals=Object.values(attempts), correct=vals.filter(x=>x.isCorrect).length, wrong=vals.length-correct, un=QUESTIONS.length-vals.length;
+  document.getElementById("totalBadge").textContent=QUESTIONS.length;
+  document.getElementById("scoreBadge").textContent=correct;
+  document.getElementById("answeredBadge").textContent=vals.length;
+  document.getElementById("correctStat").textContent=correct;
+  document.getElementById("wrongStat").textContent=wrong;
+  document.getElementById("unattemptedStat").textContent=un;
+  const c=vals.length?correct/vals.length*360:0,w=vals.length?wrong/vals.length*360:0;
+  document.getElementById("donut").style.background=`conic-gradient(var(--green) 0deg ${c}deg,var(--red) ${c}deg ${c+w}deg,var(--border) ${c+w}deg 360deg)`;
+  const stats={}; QUESTIONS.forEach(q=>{stats[q.topic]??={a:0,c:0};const at=attempts[q.id];if(at){stats[q.topic].a++;if(at.isCorrect)stats[q.topic].c++;}});
+  let rows="";
+  Object.entries(stats).forEach(([t,s])=>{const p=s.a?s.c/s.a*100:0;rows+=`<div class="topic-row"><div class="topic-head"><span>${t}</span><span>${s.a?`${s.c}/${s.a} • ${Math.round(p)}%`:"—"}</span></div><div class="bar"><span style="width:${p}%"></span></div></div>`});
+  document.getElementById("resultTopics").innerHTML=rows;
+  const enough=Object.entries(stats).filter(([,s])=>s.a>=2);
+  const strong=enough.filter(([,s])=>s.c/s.a>=.75).sort((a,b)=>b[1].c/b[1].a-a[1].c/a[1].a)[0];
+  const weak=enough.filter(([,s])=>s.c/s.a<.6).sort((a,b)=>a[1].c/a[1].a-b[1].c/b[1].a)[0];
+  document.getElementById("strengthPanel").innerHTML=strong?`<span class="status-good"><b>${strong[0]}</b></span><div class="mini">${strong[1].c}/${strong[1].a} correct (${Math.round(strong[1].c/strong[1].a*100)}%)</div>`:`<span class="status-muted">Insufficient data.</span>`;
+  document.getElementById("weaknessPanel").innerHTML=weak?`<span class="status-bad"><b>${weak[0]}</b></span><div class="mini">${weak[1].c}/${weak[1].a} correct (${Math.round(weak[1].c/weak[1].a*100)}%)</div>`:`<span class="status-muted">Insufficient data.</span>`;
+  document.getElementById("revisePanel").textContent=weak?`Revise first: ${weak[0]} — repeated errors detected.`:"Revise first: waiting for enough attempts.";
+}
+function finish(){
+  const vals=Object.values(attempts), correct=vals.filter(x=>x.isCorrect).length, wrong=vals.length-correct;
+  document.getElementById("rAttempted").textContent=vals.length;
+  document.getElementById("rCorrect").textContent=correct;
+  document.getElementById("rWrong").textContent=wrong;
+  document.getElementById("rPct").textContent=Math.round(correct/QUESTIONS.length*100)+"%";
+  document.getElementById("quizCard").style.display="none";
+  document.getElementById("resultScreen").classList.add("show");
+  updateAnalytics(); window.scrollTo({top:0,behavior:"smooth"});
+}
+function saveResult(){
+  const vals=Object.values(attempts), correct=vals.filter(x=>x.isCorrect).length;
+  const result={quizId:"IEIFS-SECTORS-V61",quizTitle:"Sectors of the Indian Economy",completedAt:new Date().toISOString(),totalQuestions:QUESTIONS.length,attempted:vals.length,correct,incorrect:vals.length-correct,percentage:Math.round(correct/QUESTIONS.length*100),responses:attempts};
+  sessionStorage.setItem("jaiib_last_result",JSON.stringify(result));
+  document.getElementById("saveStatus").innerHTML=`<span class="status-good">✓ Result prepared locally.</span> Backend save is ready for a future Google/Firebase integration.`;
+}
+function pdfReport(){
+  const vals=Object.values(attempts), correct=vals.filter(x=>x.isCorrect).length;
+  const win=window.open("","_blank");
+  if(!win){alert("Please allow pop-ups to generate the printable PDF report.");return}
+  const topicHtml=document.getElementById("resultTopics").innerHTML;
+  win.document.write(`<html><head><title>JAIIB Result — Sectors</title><style>body{font-family:Arial;color:#111;padding:35px;max-width:850px;margin:auto}h1{color:#0969da}.box{border:1px solid #ddd;padding:14px;margin:10px 0;border-radius:8px}.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}.m{background:#f5f5f5;padding:12px}.mini{color:#555;font-size:12px}.bar{height:6px;background:#ddd}.bar span{display:block;height:100%;background:#0969da}</style></head><body><h1>JAIIB PREP — Result</h1><p>Sectors of the Indian Economy</p><div class="grid"><div class="m"><b>${vals.length}</b><br>Attempted</div><div class="m"><b>${correct}</b><br>Correct</div><div class="m"><b>${vals.length-correct}</b><br>Incorrect</div><div class="m"><b>${Math.round(correct/QUESTIONS.length*100)}%</b><br>Percentage</div></div><div class="box"><b>Topic performance</b>${topicHtml}</div><div class="box"><b>Generated:</b> ${new Date().toLocaleString()}</div><p>Use the browser print dialog and choose “Save as PDF”.</p><script>window.onload=()=>setTimeout(()=>window.print(),250)<\/script></body></html>`);
+  win.document.close();
+}
+document.getElementById("themeBtn").onclick=()=>{theme=theme==="dark"?"light":"dark";applyTheme()};
+document.getElementById("freshBtn").onclick=()=>{if(confirm("Start a fresh attempt? Your current quiz progress will be cleared.")){freshState(true);const s=document.createElement("div");s.textContent="Fresh attempt started.";s.style="position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:var(--panel);border:1px solid var(--green);color:var(--green);padding:9px 13px;border-radius:8px;z-index:99";document.body.appendChild(s);setTimeout(()=>s.remove(),1600)}};
+document.getElementById("accountBtn").onclick=()=>alert("Google-only login placeholder. Connect this interface to your authentication backend later; no credentials are stored by this practice build.");
+document.getElementById("prevBtn").onclick=()=>{if(current>0){current--;renderNav();renderQuestion();persist();window.scrollTo({top:0,behavior:"smooth"})}};
+document.getElementById("nextBtn").onclick=()=>{if(current<QUESTIONS.length-1){current++;renderNav();renderQuestion();persist();window.scrollTo({top:0,behavior:"smooth"})}else finish()};
+document.getElementById("restartBtn").onclick=()=>{if(confirm("Start a fresh attempt? Your current quiz progress will be cleared.")){freshState(true)}};
+document.getElementById("saveBtn").onclick=saveResult;
+document.getElementById("pdfBtn").onclick=pdfReport;
+applyTheme();
+if(!restore()){freshState(true)} else {renderNav();renderQuestion();updateAnalytics();}
+</script>
+</body>
+</html>
